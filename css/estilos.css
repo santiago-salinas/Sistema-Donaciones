@@ -1,0 +1,169 @@
+/* Agustín Robaina y Santiago Salinas */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+/* Tags */
+
+
+img {
+    border-radius: 50%; 
+    width: 10%;
+}
+
+h2, h3, p, label, th, td, a ,ul ,li{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    background-color: #D4D4D4;
+    margin: 0px;
+}
+
+
+/* Main */
+main {
+    float: right;
+    width: 70%;
+    background-color: #BABABA;
+    padding-left: 5%;
+    padding-right: 5%;
+
+}
+
+main p, main a, label, th, td {
+    font-size: 19px;
+}
+/* Fin Main */
+
+
+/* Sections */
+section {
+    background-color: #D4D4D4;
+    float: left;
+    width: 20%;
+}
+
+section a, section p {
+    text-align: center;
+    width: 100%;
+}
+
+section h2{
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+/* Section fin */
+
+
+/* Footer */
+footer {
+    clear: both;
+    background-color: #808080;
+    text-align: center;
+    padding: 0.5px;
+}
+
+footer p {
+    color: aliceblue;
+}
+/* Footer fin */
+
+
+/* Tables */
+table {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+/* Fin Tables */
+
+/*Ul*/
+ul,li{
+    list-style-type: "✨";
+}
+li{
+    padding: 3px;
+}
+/*Fin Ul*/
+
+/* Clases */
+.redtext {
+    color: red;
+}
+
+.greentext {
+    color: green;
+}
+
+.resaltar {
+    background-color: gold;
+}
+
+.estadisticas{
+    margin-top: 70px;
+    margin-bottom: 60px;
+}
+
+.botonsection {
+    background-color: #63A3CD;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #003FB3;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.datosection {
+    background-color: #20709F;
+    border-style: double;
+    border-width: 3px;
+    border-color: #5686A6;
+    border-radius: 15px;
+    margin: 10px;
+
+}
+
+.datosection p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: white;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.botonsection p {
+    text-align: center;
+    font-size: 25px;
+    padding: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+
+}
+
+/* https://www.w3schools.com/howto/howto_css_image_center.asp */
+.centerimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+/* Fin Clases */
+
+
+#chart_div{
+    margin: 15px;
+}
+
+/*Responsive*/
+@media screen and (max-width:700px) {
+    section {width: 95%;}
+    main {width: 95%;}
+}
+/*Fin Responsive*/

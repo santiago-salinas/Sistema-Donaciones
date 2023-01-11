@@ -1,0 +1,180 @@
+<!-- Agustín Robaina y Santiago Salinas -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Donaciones</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="js/clases.js"></script>
+    <script src="js/funciones.js"></script>
+</head>
+
+<body>
+    <!--Barra lateral izquierda-->
+    <section class="Fixed">
+        <h2>Sistema de donaciones</h2>
+
+        <img class="centerimg" src="img/logo.PNG" alt="logo sistema de donaciones">
+
+        <!-- Creo divs para aplicarle el diseño de caja botones -->
+        <!-- Clase botonaside le aplica el diseño -->
+        <div class="botonsection">
+            <p><a href="#anclajedonantes">Donantes</a></p>
+        </div>
+        <div class="botonsection">
+            <p><a href="#anclajedonaciones">Donaciones</a></p>
+        </div>
+        <div class="botonsection">
+            <p><a href="#anclajeestadisticas">Estadísticas</a></p>
+        </div>
+
+        <br>
+
+        <!-- Segundo grupo de cajas con dato -->
+        <!-- Clase datosection le aplica el diseño -->
+        <div class="datosection">
+            <p>Total general</p>
+            <p id="totalGeneral">$0</p>
+        </div>
+
+        <div class="datosection">
+            <p>Monto Donación Mayor</p>
+            <p id="montoDonacionMayor">$0</p>
+        </div>
+
+    </section>
+
+    <main>
+        <!-- El id nos pemite usar <a> en el aside para hacer hypervinculos -->
+        <h2 id="anclajedonantes">Registro de Donantes</h2>
+
+        <form id="idFormDonante">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Nombre" maxlength="20" required>
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" placeholder="Dirección" maxlength="20" required>
+            <label for="telefono" >Teléfono</label>
+            
+            <!--https://stackoverflow.com/a/34641129 Permite ademas de utlizar max para validar. El onlckick hace un tope al estilo maxlength-->
+
+            <input type="number" id="telefono" placeholder="Teléfono" max="99999999999999999999" required>
+
+
+            <!--El button no hace nada por ahora, la funcionalidad se agrega en obl2, con javascript-->
+            <input type="button" id="agregardonante" value="Agregar">
+        </form>
+
+        <br>
+
+        <!-- El id nos pemite usar <a> en el section para hacer hypervinculos -->
+        <h2 id="anclajedonaciones">Registro de Donaciones</h2>
+
+        <form id="idFormDonaciones">
+            <label for="donante">Donante</label>
+
+            <!-- Select nos proprciona un drop-down list con elementos precargados -->
+            <!-- Value es el dato a acceder en javascript al usar document.getElementById("donante").value-->
+
+            <select id="idCombo" required>
+                
+            </select>
+
+            <!-- El "for" permite tocar el texto y guiar al usuario al dropdown list -->
+
+            <label for="modo">Modo</label>
+            <select id="modo" required> 
+                <option value="Efectivo">Efectivo</option>
+                <option value="Transferencia">Transferencia</option>
+                <option value="Canje">Canje</option>
+                <option value="Mercaderia">Mercadería</option>
+                <option value="Cheque">Cheque</option>
+                <option value="Otros">Otros</option>
+            </select>
+
+            <label for="monto">Monto</label>
+            <!-- Cheaquear existencia del min -->
+            <input type="number" id="monto" placeholder="" min="1" required> 
+
+            <label for="comentarios">Comentarios</label>
+            <input type="text" id="comentarios" placeholder="" maxlength="20">
+
+            <input type="button" id="agregardonacion" value="Agregar">
+        </form>
+
+       
+        <br>
+        <h3>Donaciones Registradas</h3>
+
+        <form>
+            <!--Al poner ambos radio buttons con el mismo name="orden" te deja seleccionar solo uno a la vez-->
+            <label>Orden</label>
+            <input type="radio" id="montdec" name="orden" checked="checked">
+            <label for="montdec">monto decreciente</label>
+            <input type="radio" id="nombcre" name="orden"> 
+            <label for="nombcre">nombre donante creciente</label>
+        </form>
+
+
+        <!--Tabla, por ahora es estatica, asi como se ve en el pdf. Luego se hace dinamica con javascript-->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Donante</th>
+                    <th>Modo</th>
+                    <th>Monto</th>
+                    <th>Comentarios</th>
+                </tr>
+            </thead>
+            <tbody id="idTabla">
+
+            </tbody>
+        </table>
+
+        <!--Boton resaltar fila y espacio de monto-->
+
+        <br>
+
+        <form>
+            <label for="resaltarFilas">Resaltar Filas</label>
+            <input type="checkbox" id="resaltarFilas">
+
+            <label for="montoResaltar">Monto</label>
+            <input type="number" id="montoResaltar">
+        </form>
+
+        <!-- Este div tiene propiedades margin -->
+
+        <div class="estadisticas">
+            <h2 id="anclajeestadisticas">Estadísticas</h2>
+            <p>Cantidad total de donaciones: <a id="idCantidad">No hay dato</a></p>
+            <p>Promedio de donaciones: <a id="idProm">No hay dato</a></p>
+
+            <div id="divMejor">
+            <p id="textoidMejor">Donante que mas veces donó: <a id="idMejor">No hay dato</a></p>
+            </div>
+
+            <div id="divMejores">
+            <p>Donantes que mas veces donaron</p>
+            <ul id="idMejores">
+
+
+            </ul>
+            </div>
+        </div>
+        <!--https://developers.google.com/chart/interactive/docs/quick_start-->
+        <!--Div that will hold the pie chart-->
+        <div id="chart_div"></div>
+
+    </main>
+
+    <footer>
+        <p>Santiago Salinas - Agustín Robaina</p>
+    </footer>
+</body>
+
+</html>    
